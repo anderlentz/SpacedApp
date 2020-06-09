@@ -76,7 +76,16 @@ struct HomeView: View {
                             self.carouselView
                                 .highPriorityGesture(drag)
                                 .animation(.spring(response: 0.8, dampingFraction: 0.7, blendDuration: 0.5))
-                                .padding(.top, 147)
+                                .padding(.top, 135)
+
+                            self.innerTitle
+                                .padding(.top, 527)
+                                .padding(.leading, 30)
+                                .fixedSize(horizontal: false, vertical: true)
+
+                            self.trendingCategories
+                                .padding(.top, 625)
+                                .padding(.horizontal, 30)
                     }
                 }
             }
@@ -127,6 +136,65 @@ struct HomeView: View {
         }
     }
 
+    private var innerTitle: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("Feeling Adventurous?")
+                .foregroundColor(.white)
+                .font(.system(size: 24))
+                .bold()
+            Text("Get Inspiration from these trending\ncategories")
+                .foregroundColor(.white)
+                .font(.system(size: 16))
+        }
+    }
+
+    private var trendingCategories: some View {
+        GeometryReader {  geometry in
+            VStack(alignment: .center, spacing: 10) {
+                HStack(alignment: .center,spacing: 10) {
+                    Image("nature")
+                        .resizable()
+                        .frame(width: geometry.size.width/2 - 5, height: 80)
+                        .overlay(
+                            Text("Nature")
+                                .foregroundColor(.white)
+                                .fontWeight(.semibold)
+                                .font(.system(size: 18))
+                        )
+                    Image("futuristic")
+                        .resizable()
+                        .frame(width: geometry.size.width/2 - 5, height: 80)
+                        .overlay(
+                            Text("Futuristic")
+                                .foregroundColor(.white)
+                                .fontWeight(.semibold)
+                                .font(.system(size: 18))
+                        )
+                }
+                HStack(alignment: .center,spacing: 10) {
+                    Image("party")
+                        .resizable()
+                        .frame(width: geometry.size.width/2 - 5, height: 80)
+                        .overlay(
+                            Text("Party")
+                                .foregroundColor(.white)
+                                .fontWeight(.semibold)
+                                .font(.system(size: 18))
+                        )
+                    Image("green")
+                        .resizable()
+                        .frame(width: geometry.size.width/2 - 5, height: 80)
+                        .overlay(
+                            Text("Green")
+                                .foregroundColor(.white)
+                                .fontWeight(.semibold)
+                                .font(.system(size: 18))
+                        )
+               }
+            }
+            .frame(minWidth: geometry.size.width)
+        }
+    }
     struct FakeView1: View {
         var body: some View {
             Color.black
