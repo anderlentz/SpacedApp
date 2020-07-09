@@ -27,7 +27,6 @@ struct HomeView: View {
     var body: some View {
         TabView {
             VStack(alignment: .leading) {
-
                 self.header
                     .padding(.horizontal, 15)
 
@@ -36,7 +35,6 @@ struct HomeView: View {
                     self.feelingAdventurousRow
                 }
                 .listStyle(PlainListStyle())
-
         }
             .edgesIgnoringSafeArea([.bottom])
             .tabItem { Image("Home") }
@@ -53,7 +51,7 @@ struct HomeView: View {
 
         .preferredColorScheme(.dark)
         .onAppear {
-            UITableView.appearance().separatorStyle = .none 
+            UITableView.appearance().separatorStyle = .none
         }
     }
     private var carouselView: some View {
@@ -99,7 +97,10 @@ struct HomeView: View {
         return (
             HStack(spacing: 10) {
                 ForEach((0...2), id: \.self) { count in
-                    TrendingCard(trendingItem: self.trendingItems[count],size: CGSize(width:self.screen,height: 372))
+                    TrendingCard(
+                        trendingItem: self.trendingItems[count],
+                        size: CGSize(width:self.screen, height: 372)
+                    )
                     .scaleEffect(count == self.count ? 1 : 0.96)
                     .offset(x: self.x)
                 }
@@ -211,7 +212,8 @@ struct HomeView: View {
 
     struct FakeView1: View {
         var body: some View {
-            Color.black
+            //Color.black
+            Text("Put layout here")
         }
     }
 

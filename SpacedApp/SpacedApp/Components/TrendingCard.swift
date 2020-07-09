@@ -74,13 +74,13 @@ struct TrendingCard: View {
             }
             .padding([.leading, .bottom, .trailing], 20)
         }
-        .cornerRadius(8)
+            .frame(width: self.size.width, height: self.size.height)
+            .cornerRadius(8)
     }
-    
 }
 
 struct TrendingCard_Previews: PreviewProvider {
     static var previews: some View {
-        TrendingCard(trendingItem: .mock, size: CGSize(width: 200, height: 250))
+        TrendingCard(trendingItem: .mock, size: CGSize(width: 300, height: 372))
     }
 }
