@@ -16,7 +16,7 @@ struct HomeView: View {
         TrendingItem(imageName: "simone-hutsch-699861-unsplash", title: "Ophiuchi", subtitle: "KADUNA", buttonTitle: "0.4 BTC")
     ]
 
-    @State var x: CGFloat = 30
+    @State var x: CGFloat = 0
     @State var count: Int = 0
     @State var screen = UIScreen.main.bounds.width - 60
 
@@ -28,6 +28,7 @@ struct HomeView: View {
         TabView {
             VStack(alignment: .leading) {
                 self.header
+                    .padding(.top, 12)
                     .padding(.horizontal, 15)
 
                 List {
@@ -72,7 +73,7 @@ struct HomeView: View {
                     if self.count == 0 { //if first card
                        self.x = 0 // same padding horizontal of  Discover
                     } else {
-                        self.x = -((self.screen - 20) * CGFloat(self.count))
+                        self.x = -((self.screen ) * CGFloat(self.count))
                     }
                 } else {
                     self.x = -((self.screen - 20) * CGFloat(self.count))
@@ -83,13 +84,13 @@ struct HomeView: View {
                     self.count += 1
 
                     if self.count == self.trendingItems.count - 1 { //last element
-                        self.x = -((self.screen - 5) * CGFloat(self.count))
+                        self.x = -((self.screen + 5) * CGFloat(self.count))
                     } else {
-                        self.x = -((self.screen - 20) * CGFloat(self.count))
+                        self.x = -((self.screen) * CGFloat(self.count))
                     }
                 } else {
                     // if here user tried to scroll last card
-                    self.x = -((self.screen - 5) * CGFloat(self.count))
+                    self.x = -((self.screen + 10) * CGFloat(self.count))
                 }
             }
         })
